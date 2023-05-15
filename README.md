@@ -30,7 +30,7 @@ Dữ liệu được tổng hợp ở bảng: "Regular season" [ở đây](https
 <img src="scrap2.png">
 <em>Dữ liệu ở bảng Shooting của từng đội</em>
 
-[code tại đây](scraping.ipynb)
+[Chi tiết code tại đây](scraping.ipynb)
 
 ### 2.2. Sơ chế dữ liệu (Data Wrangling)
 
@@ -88,7 +88,7 @@ matches["hour"] = matches["time"].str.replace(":.+", "", regex=True).astype("int
 matches["day_code"] = matches["date"].dt.dayofweek
 ```
 
-[code tại đây](data_clean_and_preprocessing.ipynb)
+[Chi tiết code tại đây](data_clean_and_preprocessing.ipynb)
 
 ### 2.3. Trực quan hóa dữ liệu (Data Visualisation)
 
@@ -131,7 +131,7 @@ matches["day_code"] = matches["date"].dt.dayofweek
 <img src="Data Visualisation\4.png" alt="Figure 5">
 <em>Figure 13. Biểu đồ heatmap để hiển thị ma trận tương quan giữa các biến</em>
 
-[code tại đây](Data%20Visualisation/data_visualization.ipynb)
+[Chi tiết code tại đây](Data%20Visualisation/data_visualization.ipynb)
 
 ### 2.4. Trích chọn đặc trưng (Feature Selection)
 
@@ -187,6 +187,24 @@ Nhận thấy accuracy score khá ổn tuy nhiên precision score chỉ xấp x�
 Ta tính mức trung bình hiệu suất của đội bóng qua các trận đấu là các đặc trưng: ghi được bao nhiêu bàn thắng, số cú sút
 Tiến hành gom dữ liệu theo từng đội bóng và tính toán trung bình luân phiên dữ liệu của 3 tuần trước đó để chuyển dữ liệu đó vào tuần thứ tư
 
+```
+def rolling_averages(group, cols, new_cols):
+    group = group.sort_values("date")
+    rolling_stats = group[cols].rolling(3, closed='left').mean()
+    group[new_cols] = rolling_stats
+    group = group.dropna(subset=new_cols)
+    return group
+
+cols = ["gf", "ga", "sh", "sot", "dist", "fk", "pk", "pkatt"]
+new_cols = [f"{c}_rolling" for c in cols]
+
+matches_rolling = matches.groupby("team").apply(lambda x: rolling_averages(x, cols, new_cols))
+matches_rolling = matches_rolling.droplevel('team')
+matches_rolling.index = range(matches_rolling.shape[0])
+```
+
+<img src="data_after_preprocessing.png" alt="Figure 5">
+
 ## 4. Đánh giá và điều chỉnh mô hình
 
 Mục tiêu: sử dụng các mô hình máy học để dự đoán đội bóng chiến thắng.
@@ -238,6 +256,8 @@ Cuối cùng vẽ đường cong học tập (learning curve) của mô hình, b
 <img src="knn\figures\2.png" alt="Figure 9">
 <em>Figure 17. Learning Curve của kNN </em>
 
+[Chi tiết code tại đây](knn/predict_knn.ipynb)
+
 ### 4.2. Random Forest
 
 Các chỉ số sau khi xây dựng mô hình có kết quả
@@ -275,6 +295,8 @@ Cross-Validation Accuracy Score:  64.1 %
 <img src="rf\figures\3.png" alt="Figure 11">
 <em>Figure 20. Biểu đồ Feature Importance </em>
 
+[Chi tiết code tại đây](rf/predict_rf.ipynb)
+
 ### 4.3. SVM
 
 Các chỉ số sau khi xây dựng mô hình có kết quả
@@ -310,6 +332,8 @@ Cross-Validation Accuracy Score:  63.0 %
 <img src="svm\figures\3.png" alt="Figure 14">
 <em>Figure 23. Learning Curve của SVM </em>
 
+[Chi tiết code tại đây](svm/predict_svm.ipynb)
+
 ### 4.4. Neural Network
 
 Tạo và huấn luyện mô hình MLP với các tham số cố định, bao gồm hidden_layer_sizes (kích thước các tầng ẩn), max_iter (số lần lặp tối đa), và random_state (nguồn số ngẫu nhiên).
@@ -342,6 +366,8 @@ Cross-Validation Accuracy Score:  64.4 %
 <img src="mlp\figures\2.png" alt="Figure 16">
 <em>Figure 25. Mô hình MLP với các kích thước tầng ẩn khác nhau</em>
 
+[Chi tiết code tại đây](mlp/predict_mlp.ipynb)
+
 ## 4. Đánh giá mô hình
 
 ### 4.1. Đánh giá giữa các mô hình
@@ -352,6 +378,9 @@ Dưới đây là biểu đồ so sánh các hệ số đánh giá giữa các m
 
 <img src="2.png" alt="Figure 17">
 <em>Figure 27. So sánh Cross-Validation Accuracy Score giữa các mô hình</em>
+
+[Chi tiết code tại đây](Evaluation.ipynb)
+
 <!-- Accuracy: Mô hình Random Forest có điểm số cao nhất với khoảng 0.665, tiếp theo là SVM (0.626), kNN (0.633) và Neural Network (0.615). Tuy nhiên, sự khác biệt giữa các mô hình không lớn.
 
 Precision: Mô hình SVM có độ chính xác (precision) cao nhất với khoảng 0.7, tiếp theo là Random Forest (0.698), kNN (0.584) và Neural Network (0.52).
@@ -387,3 +416,5 @@ Những việc sẽ được làm tiếp theo để cải thiện mô hình dự
 - Thu thập thêm nhiều dữ liệu của nhiều mùa trước đó
 - Dùng thêm nhiều phương pháp khác nhau để giải quyết(PCA, LDA)
 - Tìm thêm các đặc trưng ảnh hưởng đến kết quả dự đoán
+
+[Thư mục dự án và dataset](https://github.com/trinhvu1711/Football_Prediction_Project)
