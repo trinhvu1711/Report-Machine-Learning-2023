@@ -403,9 +403,7 @@ Nếu khả năng phát hiện và phân loại đúng các mẫu là ưu tiên:
 
 Nếu cân bằng giữa precision và recall: Trong trường hợp này, cả Neural Network và kNN có F1-score tương đối cao.
 
-## 5. Công việc trong tương lai
-
-## 6. Kết luận
+## 5. Kết luận
 
 Với dữ liệu được chuẩn bị, sau khi thực hiện tiền xử lý dữ liệu, tối ưu lại dữ liệu thì đã xây dựng được mô hình dự đoán duy trì độ chính xác trung bình là 60% và có thể đạt tới 70%
 
