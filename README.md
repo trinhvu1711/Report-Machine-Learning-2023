@@ -417,4 +417,4 @@ Những việc sẽ được làm tiếp theo để cải thiện mô hình dự
 - Dùng thêm nhiều phương pháp khác nhau để giải quyết(PCA, LDA)
 - Tìm thêm các đặc trưng ảnh hưởng đến kết quả dự đoán
 
-[Thư mục dự án và dataset](https://github.com/trinhvu1711/Football_Prediction_Project)
+[Thư mục dự án và dataset](https://github.com/trinhvu1711/Report-Machine-Learning-2023)
