@@ -368,9 +368,9 @@ Cross-Validation Accuracy Score:  64.4 %
 
 [Chi tiết code tại đây](mlp/predict_mlp.ipynb)
 
-## 4. Đánh giá mô hình
+## 5. Đánh giá mô hình
 
-### 4.1. Đánh giá giữa các mô hình
+### 5.1. Đánh giá giữa các mô hình
 
 Dưới đây là biểu đồ so sánh các hệ số đánh giá giữa các mô hình máy học đã được xây dựng để giải quyết bài toán ban đầu. Gồm có 4 giá trị: Accuracy (Độ chính xác tổng quát), Precision (Độ chính xác), Recall (Độ nhạy), F1.
 <img src="1.png" alt="Figure 17">
@@ -395,7 +395,7 @@ Recall: Mô hình Neural Network có giá trị Recall cao nhất với khoảng
 
 F1-score: Mô hình Neural Network có giá trị F1-score cao nhất với khoảng 0.517, tiếp theo là Random Forest (0.408), kNN (0.391) và SVM (0.202). F1-score là một chỉ số kết hợp giữa Precision và Recall, đo lường sự cân bằng giữa độ chính xác và khả năng tìm ra các trường hợp Positive. Mô hình Neural Network đạt được một sự cân bằng tốt giữa Precision và Recall, trong khi SVM có F1-score thấp nhất trong số các mô hình. -->
 
-### 4.2. Lựa chọn mô hình
+### 5.2. Lựa chọn mô hình
 
 Nếu độ chính xác là yếu tố quan trọng nhất: thì có thể chọn mô hình Random Forest, vì nó có độ chính xác tương đối cao.
 
@@ -403,7 +403,7 @@ Nếu khả năng phát hiện và phân loại đúng các mẫu là ưu tiên:
 
 Nếu cân bằng giữa precision và recall: Trong trường hợp này, cả Neural Network và kNN có F1-score tương đối cao.
 
-## 5. Kết luận
+## 6. Kết luận
 
 Với dữ liệu được chuẩn bị, sau khi thực hiện tiền xử lý dữ liệu, tối ưu lại dữ liệu thì đã xây dựng được mô hình dự đoán duy trì độ chính xác trung bình là 60% và có thể đạt tới 70%
 
