@@ -24,10 +24,10 @@ Bóng đá là bộ môn thể thao phổ biến nhất trên thế giới. Mộ
 
 Dữ liệu được tổng hợp ở bảng: "Regular season" [ở đây](https://fbref.com/en/comps/9/Premier-League-Stats) và chi tiết dữ liệu cho từng đội ở bảng "Shotting"
 
-<img src="scrap1.png">
+<img src="Figures/scrap1.png">
 <em>Dữ liệu ở bảng Regular season</em>
 
-<img src="scrap2.png">
+<img src="Figures/scrap2.png">
 <em>Dữ liệu ở bảng Shooting của từng đội</em>
 
 [Chi tiết code tại đây](scraping.ipynb)
@@ -90,54 +90,54 @@ matches["day_code"] = matches["date"].dt.dayofweek
 
 [Chi tiết code tại đây](data_clean_and_preprocessing.ipynb)
 
-### 2.3. Trực quan hóa dữ liệu (Data Visualisation)
+### 2.3. Trực quan hóa dữ liệu (Data Visualization)
 
-<img src="Data Visualisation\6.png">
+<img src="Data Visualization\6.png">
 <em>Figure 1. Phân bố kết quả trận đấu</em>
 
-<img src="Data Visualisation\13.png">
+<img src="Data Visualization\13.png">
 <em>Figure 2. Biểu đồ cho các đặc trưng</em>
 
-<img src="Data Visualisation\12.png" alt="Figure 1">
+<img src="Data Visualization\12.png" alt="Figure 1">
 <em>Figure 3. Tổng số bàn thắng của từng đội theo mùa giải</em>
 
-<img src="Data Visualisation\10.png" alt="Figure 2">
+<img src="Data Visualization\10.png" alt="Figure 2">
 <em>Figure 4. Phân bố sút phạt penalty</em>
 
-<img src="Data Visualisation\3.png" alt="Figure 3">
+<img src="Data Visualization\3.png" alt="Figure 3">
 <em>Figure 5.Biểu đồ boxplot cho xếp hạng xG của đội chủ nhà theo giải đấu</em>
 
-<img src="Data Visualisation\1.png" alt="Figure 1">
+<img src="Data Visualization\1.png" alt="Figure 1">
 <em>Figure 6. Trực quan hóa phân phối của số bàn thắng của đội chủ nhà</em>
 
-<img src="Data Visualisation\8.png" alt="Figure 2">
+<img src="Data Visualization\8.png" alt="Figure 2">
 <em>Figure 7. Biểu đồ tương quan giữa xếp hàng xg và số bàn thắng</em>
 
-<img src="Data Visualisation\9.png" alt="Figure 2">
+<img src="Data Visualization\9.png" alt="Figure 2">
 <em>Figure 8. Biểu đồ tương quan giữa kiểm soát bóng và số bàn thắng</em>
 
-<img src="Data Visualisation\11.png" alt="Figure 2">
+<img src="Data Visualization\11.png" alt="Figure 2">
 <em>Figure 9. Biểu đồ tương quan giữa xếp hàng xg và tỷ lệ kiểm soát bóng</em>
 
-<img src="Data Visualisation\2.png" alt="Figure 2">
+<img src="Data Visualization\2.png" alt="Figure 2">
 <em>Figure 10. Biểu đồ tương quan giữa tỷ lệ kiểm soát bóng và số cú sút của đội chủ nhà</em>
 
-<img src="Data Visualisation\7.png" alt="Figure 2">
+<img src="Data Visualization\7.png" alt="Figure 2">
 <em>Figure 11. Biểu đồ tương quan giữa tỷ lệ kiểm soát bóng và số cú sút của đội chủ nhà</em>
 
-<img src="Data Visualisation\newplot.png" alt="Figure 4">
+<img src="Data Visualization\newplot.png" alt="Figure 4">
 <em>Figure 12. Biểu đồ tương quan giữa số lượng khán giả có mặt và số bàn thắng đội nhà</em>
 
-<img src="Data Visualisation\4.png" alt="Figure 5">
+<img src="Data Visualization\4.png" alt="Figure 5">
 <em>Figure 13. Biểu đồ heatmap để hiển thị ma trận tương quan giữa các biến</em>
 
-[Chi tiết code tại đây](Data%20Visualisation/data_visualization.ipynb)
+[Chi tiết code tại đây](Data%20Visualization/data_visualization.ipynb)
 
 ### 2.4. Trích chọn đặc trưng (Feature Selection)
 
 Thực hiện trích chọn đặc trưng, sử dụng SelectKBest để chọn K đặc trưng quan trọng nhất
 
-<img src="Data Visualisation\5.png" alt="Figure 5">
+<img src="Data Visualization\5.png" alt="Figure 5">
 
 <em>Figure 14. Biểu đồ các đặc trưng được chọn</em>
 
@@ -203,7 +203,7 @@ matches_rolling = matches_rolling.droplevel('team')
 matches_rolling.index = range(matches_rolling.shape[0])
 ```
 
-<img src="data_after_preprocessing.png" alt="Figure 5">
+<img src="Figures/data_after_preprocessing.png" alt="Figure 5">
 
 ## 4. Đánh giá và điều chỉnh mô hình
 
@@ -369,10 +369,10 @@ Cross-Validation Accuracy Score:  64.4 %
 ### 5.1. Đánh giá giữa các mô hình
 
 Dưới đây là biểu đồ so sánh các hệ số đánh giá giữa các mô hình máy học đã được xây dựng để giải quyết bài toán ban đầu. Gồm có 4 giá trị: Accuracy (Độ chính xác tổng quát), Precision (Độ chính xác), Recall (Độ nhạy), F1.
-<img src="1.png" alt="Figure 17">
+<img src="Figures/1.png" alt="Figure 17">
 <em>Figure 26. So sánh các hệ số giữa các mô hình</em>
 
-<img src="2.png" alt="Figure 17">
+<img src="Figures/2.png" alt="Figure 17">
 <em>Figure 27. So sánh Cross-Validation Accuracy Score giữa các mô hình</em>
 
 [Chi tiết code tại đây](Evaluation.ipynb)
