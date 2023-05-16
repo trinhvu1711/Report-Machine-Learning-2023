@@ -209,10 +209,6 @@ matches_rolling.index = range(matches_rolling.shape[0])
 
 Mục tiêu: sử dụng các mô hình máy học để dự đoán đội bóng chiến thắng.
 
-Các đặc trưng dùng để train:
-
-Các đặc trưng dùng để test:
-
 Mô hình ban đầu được tạo và được sử dụng tập huấn luyện (X_train, y_train) để huấn luyện. Sau đó mô hình sẽ được dự đoán kết quả dựa trên tập test (X_test) và lưu trữ kết quả dự đoán ở preds
 
 Tiếp theo tính toán confusion matrix và các chỉ số đánh giá như accuracy_score, precision_score, recall_score và f1_score
